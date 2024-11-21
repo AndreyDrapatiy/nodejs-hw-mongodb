@@ -1,34 +1,19 @@
-import express from 'express';
-import cors from 'cors';
-import pino from 'pino-http';
-import contactsRouter from './routers/contacts.js';
+import app from './app.js';
+import { initMongoConnection } from './db/initMongoConnection.js';
 import { env } from './utils/env.js';
-import { errorHandler } from './middlewares/errorHandler.js';
-import { notFoundHandler } from './middlewares/notFoundHandler.js';
 
-const PORT = Number(env('PORT', '8080'));
+const bootstrap = async () => {
+  try {
+    await initMongoConnection();
 
-export const setupServer = () => {
-  const app = express();
+    const PORT = Number(env('PORT', '8080'));
 
-  app.use(cors());
-  app.use(express.json());
-
-  app.use(
-    pino({
-      transport: {
-        target: 'pino-pretty',
-      },
-    }),
-  );
-
-  app.use(contactsRouter);
-
-  app.use('*', notFoundHandler);
-
-  app.use(errorHandler);
-
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
+
+bootstrap();
