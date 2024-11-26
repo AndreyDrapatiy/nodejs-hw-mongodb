@@ -10,12 +10,12 @@ export const getContacts = async ({
   contactType,
   isFavourite,
 }) => {
-
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
   const filter = {};
-  if (['work', 'home', 'personal'].includes(contactType)) filter.contactType = { $in: contactType };
+  if (['work', 'home', 'personal'].includes(contactType))
+    filter.contactType = { $in: contactType };
   if (['true', 'false'].includes(isFavourite)) filter.isFavourite = isFavourite;
 
   const contactsQuery = Contact.find(filter);
