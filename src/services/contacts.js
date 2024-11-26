@@ -16,7 +16,7 @@ export const getContacts = async ({
 
   const filter = {};
   if (['work', 'home', 'personal'].includes(contactType)) filter.contactType = { $in: contactType };
-  if ([true, false].includes(contactType)) filter.isFavourite = isFavourite;
+  if (contactType) filter.isFavourite = isFavourite;
 
   const contactsQuery = Contact.find(filter);
   const contactsCount = await Contact.find(filter)
