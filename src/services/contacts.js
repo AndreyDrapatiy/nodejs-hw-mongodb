@@ -1,4 +1,4 @@
-import Contact from '../db/models/Contact.js';
+import Contact, { contactSchema } from '../db/models/Contact.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 import { SORT_ORDER } from '../constants/index.js';
 
@@ -15,8 +15,8 @@ export const getContacts = async ({
   const skip = (page - 1) * perPage;
 
   const filter = {};
-  if (contactType) filter.contactType = { $in: contactType };
-  if (isFavourite) filter.isFavourite = isFavourite;
+  if (['work', 'home', 'personal'].includes(contactType)) filter.contactType = { $in: contactType };
+  if (['true', 'false'].includes(contactType)) filter.isFavourite = isFavourite;
 
   const contactsQuery = Contact.find(filter);
   const contactsCount = await Contact.find(filter)
