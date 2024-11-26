@@ -13,8 +13,16 @@ import { contactSchema } from '../db/models/Contact.js';
 export const getContactsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = parseSortParams(req.query, contactSchema);
+  const { contactType, isFavourite } = req.query;
 
-  const data = await getContacts({ page, perPage, sortBy, sortOrder });
+  const data = await getContacts({
+    page,
+    perPage,
+    sortBy,
+    sortOrder,
+    contactType,
+    isFavourite,
+  });
 
   res.send({
     status: 200,

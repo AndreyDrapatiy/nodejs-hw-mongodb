@@ -7,12 +7,19 @@ export const getContacts = async ({
   perPage = 5,
   sortOrder = SORT_ORDER.ASC,
   sortBy = '_id',
+  contactType,
+  isFavourite,
 }) => {
+
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const contactsQuery = Contact.find();
-  const contactsCount = await Contact.find()
+  const filter = {};
+  if (contactType) filter.contactType = { $in: contactType };
+  if (isFavourite) filter.isFavourite = isFavourite;
+
+  const contactsQuery = Contact.find(filter);
+  const contactsCount = await Contact.find(filter)
     .merge(contactsQuery)
     .countDocuments();
 
