@@ -20,7 +20,9 @@ export const createContactSchema = Joi.object({
     'string.email': 'Invalid email format',
   }),
   isFavourite: Joi.boolean(),
-  contactType: Joi.string().valid('work', 'home', 'personal').default('personal'),
+  contactType: Joi.string()
+    .valid('work', 'home', 'personal')
+    .default('personal'),
 });
 
 export const updateContactSchema = Joi.object({
