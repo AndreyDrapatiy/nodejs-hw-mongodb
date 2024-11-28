@@ -18,7 +18,7 @@ app.use(
   }),
 );
 
-app.use('/', routes);
+app.use(routes);
 
 app.use('*', notFoundHandler);
 
