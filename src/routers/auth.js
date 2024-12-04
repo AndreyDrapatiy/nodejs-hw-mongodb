@@ -13,5 +13,4 @@ router.post(
   ctrlWrapper(registerUserController),
 );
 
-
 export default router;

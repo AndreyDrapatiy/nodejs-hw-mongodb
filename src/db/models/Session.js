@@ -16,12 +16,12 @@ export const sessionSchema = new Schema(
     },
     accessTokenValidUntil: {
       type: Date,
-      required: true
+      required: true,
     },
     refreshTokenValidUntil: {
       type: Date,
-      required: true
-    }
+      required: true,
+    },
   },
   {
     versionKey: false,
