@@ -25,15 +25,9 @@ export const sessionSchema = new Schema(
   },
   {
     versionKey: false,
-    timestamps: true,
+    timestamps: false,
   },
 );
 
-sessionSchema.methods.toJSON = function () {
-  const obj = this.toObject();
-  delete obj.password;
-  return obj;
-};
-
-const Session = model('user', sessionSchema);
+const Session = model('session', sessionSchema);
 export default Session;
