@@ -1,4 +1,9 @@
-import { loginUser, logoutUser, refreshUsersSession, registerUser } from '../services/auth.js';
+import {
+  loginUser,
+  logoutUser,
+  refreshUsersSession,
+  registerUser,
+} from '../services/auth.js';
 import { THIRTY_DAYS } from '../constants/index.js';
 
 const setupSession = (res, session) => {

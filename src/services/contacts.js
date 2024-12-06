@@ -9,11 +9,12 @@ export const getContacts = async ({
   sortBy = '_id',
   contactType,
   isFavourite,
+  userId,
 }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const filter = {};
+  const filter = { userId: userId };
   if (['work', 'home', 'personal'].includes(contactType))
     filter.contactType = { $in: contactType };
   if (['true', 'false'].includes(isFavourite)) filter.isFavourite = isFavourite;
@@ -37,7 +38,8 @@ export const getContacts = async ({
   };
 };
 
-export const getContact = (id) => Contact.findById(id);
+export const getContact = ({ id, userId }) =>
+  Contact.findOne({ _id: id, userId: userId });
 
 export const createContact = async (payload) => await Contact.create(payload);
 

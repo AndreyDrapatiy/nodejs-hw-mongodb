@@ -15,7 +15,7 @@ const createSession = () => {
     accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
     refreshTokenValidUntil: new Date(Date.now() + THIRTY_DAYS),
   };
-}
+};
 
 export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
   const session = await Session.findOne({
@@ -58,7 +58,6 @@ export const registerUser = async (payload) => {
 };
 
 export async function loginUser({ email, password }) {
-
   const user = await User.findOne({ email });
 
   if (!user) {
