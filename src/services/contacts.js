@@ -43,13 +43,13 @@ export const getContact = ({ id, userId }) =>
 
 export const createContact = async (payload) => await Contact.create(payload);
 
-export const updateContact = async (id, payload) => {
-  const result = await Contact.findOneAndUpdate({ _id: id }, payload, {
+export const updateContact = async (id, userId, payload) => {
+  const result = await Contact.findOneAndUpdate({ _id: id, userId }, payload, {
     new: true,
   });
 
   return result;
 };
 
-export const deleteContact = async (id) =>
-  await Contact.findOneAndDelete({ _id: id });
+export const deleteContact = async (id, userId) =>
+  await Contact.findOneAndDelete({ _id: id, userId });
