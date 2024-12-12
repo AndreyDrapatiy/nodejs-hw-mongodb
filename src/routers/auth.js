@@ -5,9 +5,9 @@ import {
   loginUserController,
   logoutUserController,
   refreshSessionController,
-  registerUserController,
+  registerUserController, requestResetEmailController,
 } from '../controllers/auth.js';
-import { createUserSchema, loginUserSchema } from '../validation/auth.js';
+import { createUserSchema, loginUserSchema, requestResetEmailSchema } from '../validation/auth.js';
 
 const router = Router();
 
@@ -27,4 +27,9 @@ router.post('/logout', ctrlWrapper(logoutUserController));
 
 router.post('/refresh', ctrlWrapper(refreshSessionController));
 
+router.post(
+  '/request-reset-email',
+  validateBody(requestResetEmailSchema),
+  ctrlWrapper(requestResetEmailController),
+);
 export default router;
