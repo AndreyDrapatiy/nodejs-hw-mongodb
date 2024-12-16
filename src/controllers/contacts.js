@@ -53,6 +53,8 @@ export const getContactController = async (req, res) => {
 
 export const createContactController = async (req, res) => {
   const { _id: userId } = req.user;
+  const photo = req.file;
+
   const contact = await createContact({ ...req.body, userId });
 
   res.status(201).send({
