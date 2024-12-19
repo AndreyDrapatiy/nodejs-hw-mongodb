@@ -1,0 +1,35 @@
+type: object
+required:
+  - name
+  - email
+  - password
+properties:
+  id:
+    type: string
+    description: "Unique identifier for the user."
+    example: "64c4a8b7921dcab5e8b8e5f6"
+  name:
+    type: string
+    description: "The name of the user."
+    minLength: 3
+    maxLength: 20
+    example: "John Doe"
+  email:
+    type: string
+    format: email
+    description: "The email address of the user."
+    example: "user@example.com"
+  password:
+    type: string
+    description: "The user's password."
+    example: "Password123!"
+  createdAt:
+    type: string
+    format: date-time
+    description: "Timestamp when the user was created."
+    example: "2024-12-01T12:34:56Z"
+  updatedAt:
+    type: string
+    format: date-time
+    description: "Timestamp when the user was last updated."
+    example: "2024-12-02T14:23:00Z"

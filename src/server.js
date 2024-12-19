@@ -3,8 +3,6 @@ import { initMongoConnection } from './db/initMongoConnection.js';
 import { env } from './utils/env.js';
 import { createDirIfNotExists } from './utils/createDirIfNotExists.js';
 import { TEMP_UPLOAD_DIR, UPLOAD_DIR } from './constants/index.js';
-import { swaggerDocs } from './middlewares/swaggerDocs.js';
-import express from 'express';
 
 const bootstrap = async () => {
   try {

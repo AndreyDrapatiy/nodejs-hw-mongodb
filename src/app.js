@@ -21,7 +21,6 @@ app.use(
     },
   }),
 );
-
 app.use('/api-docs', swaggerDocs());
 
 app.use(routes);

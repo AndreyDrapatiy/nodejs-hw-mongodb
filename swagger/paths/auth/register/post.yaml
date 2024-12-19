@@ -1,0 +1,112 @@
+tags:
+  - Auth
+summary: Register a new user
+operationId: registerUser
+description: 'Create a new user account with name, email, and password.'
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - email
+          - password
+        properties:
+          name:
+            type: string
+            description: "User's name."
+            minLength: 3
+            maxLength: 20
+            example: "John Doe"
+          email:
+            type: string
+            format: email
+            description: "User's email address."
+            example: "user@example.com"
+          password:
+            type: string
+            description: "User's password."
+            example: "Password123!"
+responses:
+  '201':
+    description: User registered successfully
+    content:
+      application/json:
+        schema:
+          type: object
+          $ref: ../../../components/schemas/user.yaml
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: "User successfully registered!"
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: "Unique identifier of the created user."
+                  example: "64c4a8b7921dcab5e8b8e5f6"
+                name:
+                  type: string
+                  description: "Name of the registered user."
+                  example: "John Doe"
+                email:
+                  type: string
+                  description: "Email of the registered user."
+                  example: "user@example.com"
+              $ref: ../../../components/schemas/user.yaml
+  '400':
+    description: Validation error
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - errors
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: "Validation errors occurred"
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  field:
+                    type: string
+                    description: "Field with the validation error."
+                    example: "name"
+                  message:
+                    type: string
+                    description: "Validation error message."
+                    example: "Name should have at least 3 characters"
+  '409':
+    description: Email already exists
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+          properties:
+            status:
+              type: integer
+              example: 409
+            message:
+              type: string
+              example: "Email already exists"
