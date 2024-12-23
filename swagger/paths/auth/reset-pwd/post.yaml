@@ -43,35 +43,3 @@ responses:
             data:
               type: object
               properties: {}
-  '401':
-    description: Invalid or expired token
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - message
-            - status
-          properties:
-            message:
-              type: string
-              example: 'Token is expired or invalid.'
-            status:
-              type: integer
-              example: 401
-  '404':
-    description: User not found
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - message
-            - status
-          properties:
-            message:
-              type: string
-              example: 'User not found'
-            status:
-              type: integer
-              example: 404

@@ -51,5 +51,4 @@ responses:
                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
   '404':
     $ref: ../../../components/responses/404.yaml
-  '401':
-    $ref: ../../../components/responses/401.yaml
+
