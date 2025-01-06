@@ -715,9 +715,6 @@
           },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           }
         }
       },
@@ -740,22 +737,11 @@
                 "type": "object",
                 "required": [
                   "_id",
-                  [
-                    "name"
-                  ],
-                  "phoneNumber"
+                  "name",
+                  "phoneNumber",
+                  "contactType"
                 ],
                 "properties": {
-                  "_id": {
-                    "description": "Contact id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
-                  "userId": {
-                    "description": "Contact`s user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "name": {
                     "description": "Contact name",
                     "type": "string",
@@ -1089,6 +1075,7 @@
       "user": {
         "type": "object",
         "required": [
+          "id",
           "name",
           "email",
           "password"
@@ -1135,8 +1122,10 @@
         "type": "object",
         "required": [
           "_id",
+          "userId",
           "name",
-          "phoneNumber"
+          "phoneNumber",
+          "contactType"
         ],
         "properties": {
           "_id": {

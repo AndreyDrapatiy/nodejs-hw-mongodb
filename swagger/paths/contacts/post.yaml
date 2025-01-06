@@ -12,17 +12,10 @@ requestBody:
         type: object
         required:
           - _id
-          - - name
+          - name
           - phoneNumber
+          - contactType
         properties:
-          _id:
-            description: "Contact id"
-            type: string
-            example: "65e4decdd286b30065d54af9"
-          userId:
-            description: "Contact`s user id"
-            type: string
-            example: "65e4decdd286b30065d54af9"
           name:
             description: "Contact name"
             type: string
